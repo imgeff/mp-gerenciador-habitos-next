@@ -1,3 +1,31 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.span-1 {
+  @apply col-span-1;
+}
+
+.span-2 {
+  @apply col-span-2;
+}
+
+.span-3 {
+  @apply col-span-3;
+}
+
+.span-4 {
+  @apply col-span-4;
+}
+
+.span-5 {
+  @apply col-span-5;
+}
+
+.span-6 {
+  @apply col-span-6;
+}
+
+.span-7 {
+  @apply col-span-7;
+}
