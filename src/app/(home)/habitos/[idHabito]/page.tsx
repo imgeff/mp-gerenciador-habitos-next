@@ -6,6 +6,7 @@ import { ArrowLeftIcon } from '@heroicons/react/24/outline'
 import { Calendar } from '@/components/calendar'
 import { Habito } from '@/data/habitos/buscarHabitos'
 import Link from 'next/link'
+import { Metadata } from 'next'
 import { buscarRegistrosHabitoDoMes } from '@/services/registros-habito-mes'
 import { toast } from 'react-toastify'
 
@@ -13,6 +14,11 @@ type HabitDetailsProps = {
   params: {
     idHabito: string
   }
+}
+
+export const metadata: Metadata = {
+  title: 'Meta Diária Hábitos | Detalhes do Hábito',
+  description: 'Gerenciador de hábitos',
 }
 
 export default function HabitDetails({
