@@ -2,16 +2,10 @@
 
 import Button from '@/components/button'
 import { Form } from '@/components/form'
-import { Metadata } from 'next'
 import { Navigate } from '@/components/navigate'
 import { TextInput } from '@/components/input'
 import { cadastrarHabito } from '@/actions/habits/cadastrarHabito'
 import { useFormState } from 'react-dom'
-
-export const metadata: Metadata = {
-  title: 'Meta Diária Hábitos | Novo Hábito',
-  description: 'Gerenciador de hábitos',
-}
 
 export default function NewHabit() {
   const initialState = { message: '', errors: { habito: undefined } }
