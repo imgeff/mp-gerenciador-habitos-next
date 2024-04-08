@@ -1,5 +1,6 @@
 'use client'
 
+import { ArrowRightIcon } from '@heroicons/react/24/outline'
 import { Habito } from '@/data/habitos/buscarHabitos'
 import { IndicatorHabit } from '../indicator-habit'
 import dayjs from 'dayjs'
@@ -31,7 +32,12 @@ export function WeekHabits({ habito }: WeekHabitsProps) {
 
   return (
     <section className="flex flex-col gap-1 w-full mt-40 md:w-3/5 lg:w-2/5">
-      <p onClick={navToDetails}>{habito.nome}</p>
+      <p
+        onClick={navToDetails}
+        className="flex items-center gap-2 cursor-pointer"
+      >
+        {habito.nome} <ArrowRightIcon className="h-3 w-3" />
+      </p>
       <div>
         <div className="bg-neutral-800 rounded-xl py-3 px-8 grid grid-cols-7 font-display">
           {week.map(([day, date]) => (
