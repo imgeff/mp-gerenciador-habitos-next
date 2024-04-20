@@ -32,6 +32,7 @@ export async function cadastrarHabito(
   }
 
   try {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const payload = await usePayload()
     const habito = {
       habito: camposValidados.data.habito,

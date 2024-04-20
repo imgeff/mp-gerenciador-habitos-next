@@ -1,10 +1,10 @@
-'use server';
+'use server'
 
-import bcrypt from 'bcrypt';
-import { buscarUsuarioPorEmail } from "@/data/usuario/buscarUsuarioPorEmail";
-import { criarSessao } from '@/services/auth';
-import { redirect } from "next/navigation";
-import { z } from "zod";
+import bcrypt from 'bcrypt'
+import { buscarUsuarioPorEmail } from '@/data/usuario/buscarUsuarioPorEmail'
+import { criarSessao } from '@/services/auth'
+import { redirect } from 'next/navigation'
+import { z } from 'zod'
 
 const LoginSchema = z.object({
   email: z.string().email('Email inválido!'),
@@ -13,17 +13,17 @@ const LoginSchema = z.object({
 
 export type State = {
   errors?: {
-    email?: string[];
-    senha?: string[];
-  };
-  message?: string | null;
-};
+    email?: string[]
+    senha?: string[]
+  }
+  message?: string | null
+}
 
 export async function login(prevState: State | undefined, formData: FormData) {
   const camposValidados = LoginSchema.safeParse({
     email: formData.get('email'),
     senha: formData.get('senha'),
-  });
+  })
 
   if (!camposValidados.success) {
     return {
@@ -31,28 +31,27 @@ export async function login(prevState: State | undefined, formData: FormData) {
     }
   }
 
-  const { email, senha } = camposValidados.data;
+  const { email, senha } = camposValidados.data
 
   try {
-    const usuario = await buscarUsuarioPorEmail(email);
+    const usuario = await buscarUsuarioPorEmail(email)
     if (!usuario) {
-      throw new Error('Credenciais incorretas!');
+      throw new Error('Credenciais incorretas!')
     }
 
-    const senhaCompativel = await bcrypt.compare(senha, usuario.senha);
+    const senhaCompativel = await bcrypt.compare(senha, usuario.senha)
 
     if (!senhaCompativel) {
-      throw new Error('Credenciais incorretas!');
+      throw new Error('Credenciais incorretas!')
     }
 
-    const { id, nome } = usuario;
-    await criarSessao({ id, nome, email });
-
+    const { id, nome } = usuario
+    await criarSessao({ id, nome, email })
   } catch (error) {
     return {
       message: (error as Error).message,
-    };
+    }
   }
-  
-  redirect('/');
+
+  redirect('/')
 }

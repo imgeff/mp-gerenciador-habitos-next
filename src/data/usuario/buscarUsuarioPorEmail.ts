@@ -1,4 +1,4 @@
-import { database } from '..';
+import { database } from '..'
 
 export async function buscarUsuarioPorEmail(email: string) {
   const usuario = await database.usuario.findFirst({
@@ -8,8 +8,8 @@ export async function buscarUsuarioPorEmail(email: string) {
       nome: true,
       email: true,
       senha: true,
-    }
-  });
+    },
+  })
 
-  return usuario;
+  return usuario
 }

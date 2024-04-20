@@ -1,21 +1,30 @@
-import { HTMLAttributes } from "react";
-import { twMerge } from "tailwind-merge";
+import { HTMLAttributes } from 'react'
+import { twMerge } from 'tailwind-merge'
 
 type FormBodyProps = {
-  legenda?: string;
+  legenda?: string
   styles?: {
-    legend?: string;
+    legend?: string
   }
-} & HTMLAttributes<HTMLFieldSetElement>;
+} & HTMLAttributes<HTMLFieldSetElement>
 
-export function FormBody({ legenda, styles, className, children, ...rest }: FormBodyProps) {
+export function FormBody({
+  legenda,
+  styles,
+  className,
+  children,
+  ...rest
+}: FormBodyProps) {
   return (
     <fieldset
-      className={twMerge('w-full flex flex-col md:gap-3 xs:gap-1 gap-9', className)}
+      className={twMerge(
+        'w-full flex flex-col md:gap-3 xs:gap-1 gap-9',
+        className,
+      )}
       {...rest}
     >
-      {legenda ? <legend className={styles?.legend}>{legenda}</legend> : null }
+      {legenda ? <legend className={styles?.legend}>{legenda}</legend> : null}
       {children}
     </fieldset>
-  );
+  )
 }

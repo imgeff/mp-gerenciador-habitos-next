@@ -1,10 +1,10 @@
-'use client';
+'use client'
 
-import { ReactNode } from "react";
+import { ReactNode } from 'react'
 
 type TooltipProps = {
-  text: string;
-  children: ReactNode;
+  text: string
+  children: ReactNode
 }
 
 export default function Tooltip({ text, children }: TooltipProps) {
@@ -15,5 +15,5 @@ export default function Tooltip({ text, children }: TooltipProps) {
         {text}
       </div>
     </div>
-  );
+  )
 }
